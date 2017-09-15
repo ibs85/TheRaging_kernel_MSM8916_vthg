@@ -22,6 +22,14 @@
 #include <linux/input.h>
 #include <linux/cpufreq.h>
 
+#ifdef CONFIG_POWERSUSPEND
+#include <linux/powersuspend.h>
+#endif
+
+#ifdef CONFIG_HAS_EARLYSUSPEND
+#include <linux/earlysuspend.h>
+#endif
+
 //#define DEBUG_INTELLI_PLUG
 #undef DEBUG_INTELLI_PLUG
 
@@ -46,7 +54,8 @@ static struct workqueue_struct *intelliplug_boost_wq;
 
 static unsigned int intelli_plug_active = 0;
 
-static unsigned int touch_boost_active = 0;
+static unsigned int touch_boost_active = 1;
+module_param(touch_boost_active, uint, 0644);
 
 static unsigned int nr_run_profile_sel = 1;
 module_param(nr_run_profile_sel, uint, 0664);
@@ -213,7 +222,7 @@ static void update_per_cpu_stat(void)
 	struct ip_cpu_info *l_ip_info;
 
 	for_each_online_cpu(cpu) {
-		l_ip_info = &per_cpu(ip_info, cpu);
+		l_ip_info = &per_cpu(ip_info, cpu);;
 #ifdef DEBUG_INTELLI_PLUG
 		pr_info("cpu %u nr_running => %lu\n", cpu,
 			l_ip_info->cpu_nr_running);
