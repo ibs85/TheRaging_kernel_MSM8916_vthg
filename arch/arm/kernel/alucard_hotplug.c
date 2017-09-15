@@ -67,16 +67,12 @@ static struct hotplug_tuners {
 	struct mutex alu_hotplug_mutex;
 #endif
 } hotplug_tuners_ins = {
-	.hotplug_sampling_rate = 70,
-#ifdef CONFIG_MACH_JF
-	.hotplug_enable = 0,
-#else
+	.hotplug_sampling_rate = 65,
 	.hotplug_enable = 1,
-#endif
 	.min_cpus_online = 2,
 	.maxcoreslimit = 2,
 	.maxcoreslimit_sleep = 1,
-	.hp_io_is_busy = 0,
+	.hp_io_is_busy = 1,
 #if defined(CONFIG_POWERSUSPEND) || \
 	defined(CONFIG_HAS_EARLYSUSPEND)
 	.hotplug_suspend = 0,
@@ -836,17 +832,10 @@ static int __init alucard_hotplug_init(void)
 	int ret;
 	unsigned int cpu;
 	unsigned int hotplug_freq[NR_CPUS][2] = {
-#ifdef CONFIG_MACH_LGE
-		{0, 1497600},
-		{652800, 1190400},
-		{652800, 1190400},
-		{652800, 0}
-#else
 		{0, 1242000},
 		{810000, 1566000},
 		{918000, 1674000},
 		{1026000, 0}
-#endif
 	};
 	unsigned int hotplug_load[NR_CPUS][2] = {
 		{0, 60},
