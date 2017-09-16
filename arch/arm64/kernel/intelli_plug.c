@@ -47,8 +47,9 @@ static struct workqueue_struct *intelliplug_boost_wq;
 static unsigned int intelli_plug_active = 0;
 
 static unsigned int touch_boost_active = 0;
+module_param(touch_boost_active,0664);
 
-static unsigned int nr_run_profile_sel = 1;
+static unsigned int nr_run_profile_sel = 5;
 module_param(nr_run_profile_sel, uint, 0664);
 
 static unsigned int min_online_cpus = 1;
