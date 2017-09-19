@@ -49,6 +49,7 @@ obj-y +=mako_hotplug.o
 obj-y +=msm_zen_decision.o
 obj-y +=autosmp.o
 obj-y += msm_hotplug.o
+obj-y += thunderplug.o
 
 # vDSO - this must be built first to generate the symbol offsets
 $(call objectify,$(arm64-obj-y)): $(obj)/vdso/vdso-offsets.h
