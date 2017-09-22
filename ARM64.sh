@@ -10,7 +10,7 @@ sudo apt install ccache
 sudo apt install libncurses-dev
 echo "Cleaning and exporting"
 export ARCH=arm64
-export CROSS_COMPILE=/media/ubuntu/Windows7_OS/Kernel/aarch64/bin/aarch64-linux-gnu-
+export CROSS_COMPILE=/media/ubuntu/Windows7_OS/Kernel/aarch64/bin/aarch64-gnu-linux-android-
 make clean && make mrproper
 echo "Exporting User And Host"
 export KBUILD_BUILD_USER="VarunVaishnav"

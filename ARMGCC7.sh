@@ -8,11 +8,9 @@
 echo "Installing Libs"
 sudo apt install ccache
 sudo apt install libncurses-dev
-sudo apt install hello
 echo "Exporting Architecture and TC"
-hello -g HereWeGo
 export ARCH=arm
-export CROSS_COMPILE=/media/ubuntu/Windows7_OS/Kernel/GCC-4.8/bin/arm-eabi-
+export CROSS_COMPILE=/media/ubuntu/Windows7_OS/Kernel/arm-gcc7/bin/arm-gnu-linux-androideabi-
 echo "Cleaning ur shit"
 make clean && make mrproper
 echo "Export User And Host"
